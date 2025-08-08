@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Vocab Vault — Dictionary & Flashcards</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#071226">
+</head>
+<body>
+<div class="app" role="application">
+  <header>
+    <div>
+      <h1>Vocab Vault</h1>
+      <div class="subtitle">Search • Save • Flashcards • Daily practice</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <div class="small muted-line">Local only • Works offline after first lookup</div>
+      <button class="btn" id="open-flash">Practice</button>
+      <button class="ghost" id="open-game">Daily Game</button>
+    </div>
+  </header>
+
+  <!-- LEFT: search + results -->
+  <div>
+    <div class="search">
+      <div class="search-row">
+        <input class="search-input" id="searchInput" placeholder="Search a word (e.g., 'serendipity')" aria-label="search word"/>
+        <button class="btn" id="searchBtn">Search</button>
+        <button class="ghost" id="clearBtn">Clear</button>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
+        <div class="label">Recent lookups:</div>
+        <div id="recentRow" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="section" id="mainHeader" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div class="label">Results for</div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <div class="word-large" id="resultWord"></div>
+              <button class="btn" id="saveBtn">Save</button>
+              <button class="ghost" id="addFlashBtn">Add Flash</button>
+            </div>
+          </div>
+          <div class="small muted-line" id="phonetic"></div>
+        </div>
+      </div>
+
+      <div id="definitionsWrap"></div>
+      <div id="exampleWrap"></div>
+      <div id="synonymsWrap"></div>
+      <div id="otherWrap" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- RIGHT: saved + flashcards + game -->
+  <aside class="right-col">
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div class="label">Saved Words</div>
+          <div class="small muted-line">Tap a word to view</div>
+        </div>
+        <div>
+          <button class="ghost" id="exportBtn">Export</button>
+        </div>
+      </div>
+      <div class="saved-list" id="savedList"></div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button class="btn" id="clearSaved">Clear Saved</button>
+        <button class="ghost" id="makeAllFlash">Make Flashcards</button>
+      </div>
+    </div>
+
+    <div class="panel" id="flashPanel">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div class="label">Flashcards</div>
+          <div class="small muted-line">Study mode</div>
+        </div>
+        <div class="flash-controls">
+          <button class="ghost" id="shuffleFlash">Shuffle</button>
+          <button class="ghost" id="resetProgress">Reset progress</button>
+        </div>
+      </div>
+      <div style="margin-top:10px">
+        <div class="flashcard" id="flashcard">
+          <div class="word-large" id="cardWord">—</div>
+          <div class="card-side" id="cardDef">Pick a card to start studying</div>
+          <div class="controls">
+            <button class="btn" id="flipBtn">Flip</button>
+            <button class="ghost" id="knownBtn">I know this</button>
+            <button class="ghost" id="dontKnowBtn">Not yet</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="gamePanel">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div class="label">Daily Game</div>
+          <div class="small muted-line">Quick 5-question quiz</div>
+        </div>
+        <div><button class="btn" id="startGameBtn">Start</button></div>
+      </div>
+      <div style="margin-top:10px" id="gameArea">
+        <div class="muted-line">No game started. Use saved words to populate the quiz.</div>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
